@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.ManagerMapper" >
+  <resultMap id="BaseResultMap" type="com.test.bean.Manager" >
+    <id column="manager_id" property="manager_id" jdbcType="INTEGER" />
+    <result column="manager_phone" property="manager_phone" jdbcType="VARCHAR" />
+    <result column="manager_sex" property="manager_sex" jdbcType="VARCHAR" />
+    <result column="manager_idcard" property="manager_idcard" jdbcType="VARCHAR" />
+    <result column="manager_createuser" property="manager_createuser" jdbcType="INTEGER" />
+    <result column="manager_createtime" property="manager_createtime" jdbcType="TIMESTAMP" />
+    <result column="manager_lastmodify" property="manager_lastmodify" jdbcType="TIMESTAMP" />
+    <result column="manager_password" property="manager_password" jdbcType="VARCHAR" />
+    <result column="manager_state" property="manager_state" jdbcType="INTEGER" />
+    <result column="manager_remark" property="manager_remark" jdbcType="VARCHAR" />
+    <result column="manager_name" property="manager_name" jdbcType="VARCHAR" />
+    <result column="manager_img" property="manager_img" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    manager_id, manager_phone, manager_sex, manager_idcard, manager_createuser, manager_createtime, 
+    manager_lastmodify, manager_password, manager_state, manager_remark, manager_name, 
+    manager_img
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from power_manager
+    where manager_id = #{manager_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from power_manager
+    where manager_id = #{manager_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.test.bean.Manager" >
+    insert into power_manager (manager_id, manager_phone, manager_sex, 
+      manager_idcard, manager_createuser, manager_createtime, 
+      manager_lastmodify, manager_password, 
+      manager_state, manager_remark, manager_name, 
+      manager_img)
+    values (#{manager_id,jdbcType=INTEGER}, #{manager_phone,jdbcType=VARCHAR}, #{manager_sex,jdbcType=VARCHAR}, 
+      #{manager_idcard,jdbcType=VARCHAR}, #{manager_createuser,jdbcType=INTEGER}, #{manager_createtime,jdbcType=TIMESTAMP}, 
+      #{manager_lastmodify,jdbcType=TIMESTAMP}, #{manager_password,jdbcType=VARCHAR}, 
+      #{manager_state,jdbcType=INTEGER}, #{manager_remark,jdbcType=VARCHAR}, #{manager_name,jdbcType=VARCHAR}, 
+      #{manager_img,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.bean.Manager" >
+    insert into power_manager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="manager_id != null" >
+        manager_id,
+      </if>
+      <if test="manager_phone != null" >
+        manager_phone,
+      </if>
+      <if test="manager_sex != null" >
+        manager_sex,
+      </if>
+      <if test="manager_idcard != null" >
+        manager_idcard,
+      </if>
+      <if test="manager_createuser != null" >
+        manager_createuser,
+      </if>
+      <if test="manager_createtime != null" >
+        manager_createtime,
+      </if>
+      <if test="manager_lastmodify != null" >
+        manager_lastmodify,
+      </if>
+      <if test="manager_password != null" >
+        manager_password,
+      </if>
+      <if test="manager_state != null" >
+        manager_state,
+      </if>
+      <if test="manager_remark != null" >
+        manager_remark,
+      </if>
+      <if test="manager_name != null" >
+        manager_name,
+      </if>
+      <if test="manager_img != null" >
+        manager_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="manager_id != null" >
+        #{manager_id,jdbcType=INTEGER},
+      </if>
+      <if test="manager_phone != null" >
+        #{manager_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_sex != null" >
+        #{manager_sex,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_idcard != null" >
+        #{manager_idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_createuser != null" >
+        #{manager_createuser,jdbcType=INTEGER},
+      </if>
+      <if test="manager_createtime != null" >
+        #{manager_createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manager_lastmodify != null" >
+        #{manager_lastmodify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manager_password != null" >
+        #{manager_password,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_state != null" >
+        #{manager_state,jdbcType=INTEGER},
+      </if>
+      <if test="manager_remark != null" >
+        #{manager_remark,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_name != null" >
+        #{manager_name,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_img != null" >
+        #{manager_img,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.bean.Manager" >
+    update power_manager
+    <set >
+      <if test="manager_phone != null" >
+        manager_phone = #{manager_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_sex != null" >
+        manager_sex = #{manager_sex,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_idcard != null" >
+        manager_idcard = #{manager_idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_createuser != null" >
+        manager_createuser = #{manager_createuser,jdbcType=INTEGER},
+      </if>
+      <if test="manager_createtime != null" >
+        manager_createtime = #{manager_createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manager_lastmodify != null" >
+        manager_lastmodify = #{manager_lastmodify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manager_password != null" >
+        manager_password = #{manager_password,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_state != null" >
+        manager_state = #{manager_state,jdbcType=INTEGER},
+      </if>
+      <if test="manager_remark != null" >
+        manager_remark = #{manager_remark,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_name != null" >
+        manager_name = #{manager_name,jdbcType=VARCHAR},
+      </if>
+      <if test="manager_img != null" >
+        manager_img = #{manager_img,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where manager_id = #{manager_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.bean.Manager" >
+    update power_manager
+    set manager_phone = #{manager_phone,jdbcType=VARCHAR},
+      manager_sex = #{manager_sex,jdbcType=VARCHAR},
+      manager_idcard = #{manager_idcard,jdbcType=VARCHAR},
+      manager_createuser = #{manager_createuser,jdbcType=INTEGER},
+      manager_createtime = #{manager_createtime,jdbcType=TIMESTAMP},
+      manager_lastmodify = #{manager_lastmodify,jdbcType=TIMESTAMP},
+      manager_password = #{manager_password,jdbcType=VARCHAR},
+      manager_state = #{manager_state,jdbcType=INTEGER},
+      manager_remark = #{manager_remark,jdbcType=VARCHAR},
+      manager_name = #{manager_name,jdbcType=VARCHAR},
+      manager_img = #{manager_img,jdbcType=VARCHAR}
+    where manager_id = #{manager_id,jdbcType=INTEGER}
+  </update>
+</mapper>
