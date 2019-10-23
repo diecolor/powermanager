@@ -56,6 +56,7 @@ public class ManagerController {
             String phone
     )
     {
+        System.out.println("test git");
         ResultBean bean=null;
         try {
             index=index==null?1:index;
